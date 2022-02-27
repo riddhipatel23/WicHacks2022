@@ -35,7 +35,7 @@ data.occupation = occupation
 data.gender = gender
 
 # defining parameters on which model will be trained
-X = data[['age','occupation']]
+X = data[['age','occupation', 'gender']]
 #desired output
 Y = data['income']
 
@@ -45,9 +45,11 @@ X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size = 0.1, rando
 #Training the model 
 bias = OneVsRestClassifier(RandomForestClassifier(),n_jobs=-1)
 bias.fit(X_train,Y_train)
+# print(bias.predict([[40, 12, 1]]))
+# print(bias.predict([[40, 12, 0]]))
 
 #accuracy
-print(bias.score(X_train,Y_train))
+bias.score(X_train,Y_train)
 
 
 
