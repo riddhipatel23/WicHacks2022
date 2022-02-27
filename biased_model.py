@@ -29,7 +29,7 @@ le2 = LabelEncoder()
 gender = le2.fit_transform(data['gender'])
 gen = dict(zip(gender, data.gender))
 
-#print(occ)
+# print(occ)
 # print(gen)
 
 #updating the data with new labels
@@ -49,7 +49,7 @@ bias = OneVsRestClassifier(RandomForestClassifier(),n_jobs=-1)
 bias.fit(X_train,Y_train)
 
 #accuracy
-print(bias.score(X_train,Y_train))
+bias.score(X_train,Y_train)
 
 #test result
 # print(bias.predict([[50, 11, 1]]))
