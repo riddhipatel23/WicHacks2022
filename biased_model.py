@@ -29,7 +29,7 @@ le2 = LabelEncoder()
 gender = le2.fit_transform(data['gender'])
 gen = dict(zip(gender, data.gender))
 
-# print(occ)
+print(occ)
 # print(gen)
 
 #updating the data with new labels
@@ -38,17 +38,14 @@ data.gender = gender
 
 # defining parameters on which model will be trained
 X = data[['age','occupation', 'gender']]
-# X = X.reshape(-1, 1, 1)
+
 #desired output
 Y = data['income']
-# Y = Y.reshape(1)
+
 
 #split data into training and testing model
 X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size = 0.1)
-# X_train= X_train.values.reshape(-1, 1)
-# Y_train= Y_train.values.reshape(-1, 1)
-# X_test = X_test.values.reshape(-1, 1)
-# Y_test = Y_test.values.reshape(-1, 1)
+
 
 #Training the model 
 bias = OneVsRestClassifier(RandomForestClassifier(),n_jobs=-1)
@@ -67,7 +64,7 @@ bias_cat = CatBoostClassifier()       #accuracy: 0.8058122
 bias_svm = svm.SVC()                  #accuracy: 0.8070159
 
 #pickle
-pickle.dump(bias, open('biased.pkl','wb'))
+#pickle.dump(bias, open('biased.pkl','wb'))
 
 
 
