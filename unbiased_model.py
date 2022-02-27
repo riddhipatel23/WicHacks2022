@@ -52,6 +52,9 @@ unbias.fit(X_train,Y_train)
 #accuracy
 unbias.score(X_train,Y_train)
 
+#pickle
+pickle.dump(unbias, open('unbiased.pkl','wb'))
+
 
 
 

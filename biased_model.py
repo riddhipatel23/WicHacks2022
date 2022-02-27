@@ -51,6 +51,9 @@ bias.fit(X_train,Y_train)
 #accuracy
 bias.score(X_train,Y_train)
 
+#pickle
+pickle.dump(bias, open('biased.pkl','wb'))
+
 
 
 
