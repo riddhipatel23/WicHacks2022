@@ -43,6 +43,10 @@ Y = data['income']
 
 #split data into training and testing model
 X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size = 0.1, random_state = 23)
+# X_train= X_train.reshape(-1, 1)
+# Y_train= Y_train.reshape(-1, 1)
+# X_test = X_test.reshape(-1, 1)
+# Y_test = Y_test.reshape(-1, 1)
 
 #Training the model 
 unbias = OneVsRestClassifier(RandomForestClassifier(),n_jobs=-1)

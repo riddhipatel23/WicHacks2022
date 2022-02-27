@@ -33,7 +33,7 @@
     </div>
 
     <div>
-        <form action="{{ url_for('bias_predict')}}"method="post">
+        <form action="{{ url_for('predict')}}"method="post">
             <select id="category" name="model">
                 <option value="" disabled selected>Select Model</option>
                 <option value="0">Bias</option>
@@ -42,7 +42,7 @@
     </div>
     <div>
         <h4> Enter the following values </h4>
-        <form action="{{ url_for('bias_predict')}}"method="post">
+        <form action="{{ url_for('predict')}}"method="post">
             <input type="text" name="age" placeholder="Age" required="required" />
             <select id="category" name="occupation">
                 <option value="12">Sales</option>
