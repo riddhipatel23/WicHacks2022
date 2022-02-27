@@ -8,6 +8,8 @@ from sklearn.preprocessing import LabelEncoder
 from sklearn.model_selection import train_test_split
 from sklearn.multiclass import OneVsRestClassifier
 from sklearn.ensemble import RandomForestClassifier
+from sklearn.linear_model import LogisticRegression
+from catboost import CatBoostClassifier
 import pickle
 
 data = pd.read_csv('./data/adult.csv')
@@ -45,11 +47,18 @@ X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size = 0.1, rando
 #Training the model 
 bias = OneVsRestClassifier(RandomForestClassifier(),n_jobs=-1)
 bias.fit(X_train,Y_train)
+
+#accuracy
+print(bias.score(X_train,Y_train))
+
+#test result
 # print(bias.predict([[50, 11, 1]]))
 # print(bias.predict([[50, 11, 0]]))
 
-#accuracy
-bias.score(X_train,Y_train)
+#different model accuray
+bias_LR = LogisticRegression()        #accuracy: 0.7443410
+bias_cat = CatBoostClassifier()       #accuracy: 0.8058122
+bias_svm = svm.SVC()                  #accuracy: 0.8070159
 
 #pickle
 pickle.dump(bias, open('biased.pkl','wb'))

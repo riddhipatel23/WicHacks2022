@@ -9,6 +9,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.multiclass import OneVsRestClassifier
 from sklearn.ensemble import RandomForestClassifier
 from catboost import CatBoostClassifier
+from sklearn.linear_model import LogisticRegression
 import pickle
 
 data = pd.read_csv('./data/adult.csv')
@@ -46,11 +47,19 @@ X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size = 0.1, rando
 #Training the model 
 unbias = OneVsRestClassifier(RandomForestClassifier(),n_jobs=-1)
 unbias.fit(X_train,Y_train)
-# print(unbias.predict([[50, 11]]))
-# print(unbias.predict([[50, 11]]))
 
 #accuracy
 unbias.score(X_train,Y_train)
+
+#test result 
+# print(unbias.predict([[50, 11]]))
+# print(unbias.predict([[50, 11]]))
+
+#different model accuray
+unbias_LR = LogisticRegression()         #accuracy: 0.7478899
+unbias_cat = CatBoostClassifier()        #accuracy: 0.7832199
+unbias_svm = svm.SVC()                   #accuracy: 0.7602657
+
 
 #pickle
 pickle.dump(unbias, open('unbiased.pkl','wb'))
